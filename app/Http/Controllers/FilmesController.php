@@ -9,6 +9,7 @@ class FilmesController extends Controller
 {
     private $array = ['error'=>'', 'result'=>[]];
 
+
     public function all(){
         $filmes = Filme::all();
 
@@ -22,6 +23,17 @@ class FilmesController extends Controller
             ];
         }
         
+        return $this->array;
+    }
+
+    public function findOne($id){
+        $filme = Filme::find($id);
+
+        if($filme){
+            $this->array['result'] = $filme;
+        }else{
+            $this->array['error'] = "ID de filme não encontrado!!!";
+        }
         return $this->array;
     }
 }

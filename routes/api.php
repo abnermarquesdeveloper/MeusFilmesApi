@@ -24,3 +24,7 @@ Route::get('/test', function(Request $request){
 });
 
 Route::get('/filmes', [FilmesController::class, 'all']);
+
+Route::get('/filmes/{id}', [FilmesController::class, 'findOne']);
+
+
