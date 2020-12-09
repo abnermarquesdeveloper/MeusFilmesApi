@@ -29,4 +29,6 @@ Route::get('/filme/{id}', [FilmesController::class, 'findOne']);
 
 Route::post('/filme', [FilmesController::class, 'new']);
 
+Route::put('/filme/{id}', [FilmesController::class, 'edit']);
+
 

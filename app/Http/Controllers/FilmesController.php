@@ -65,4 +65,37 @@ class FilmesController extends Controller
 
         return $this->array;
     }
+
+    public function edit(Request $request, $id){
+        $name = $request->input('name');
+        $genre = $request->input('genre');
+        $description = $request->input('description');
+        $year = $request->input('year');
+
+        if($id && $name && $genre && $description && $year){
+            
+            $filme = Filme::find($id);
+            if($filme){
+                $filme->name = $name;
+                $filme->genre = $genre;
+                $filme->description = $description;
+                $filme->year = $year;
+                $filme->save();
+    
+                $this->array['result'] = [
+                    'id'=> $id,
+                    'name'=> $filme->name,
+                    'genre'=> $filme->genre,
+                    'description'=> $filme->description,
+                    'year'=> $filme->year
+                ];
+            }else{
+                $this->array['error'] = "ID Inexistente!!!";
+            }
+        }else{
+            $this->array['error'] = "Campos devem der preenchidos!";
+        }
+
+        return $this->array;
+    }
 }
