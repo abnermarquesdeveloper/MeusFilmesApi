@@ -98,4 +98,16 @@ class FilmesController extends Controller
 
         return $this->array;
     }
+
+    public function delete($id){
+        
+        $filme = Filme::find($id);
+        if($filme){
+            $filme->delete();
+        }else{
+            $this->array['error'] = "ID Inexistente";
+        }
+
+        return $this->array;
+    }
 }

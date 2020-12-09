@@ -31,4 +31,6 @@ Route::post('/filme', [FilmesController::class, 'new']);
 
 Route::put('/filme/{id}', [FilmesController::class, 'edit']);
 
+Route::delete('/filme/{id}', [FilmesController::class, 'delete']);
+
 
