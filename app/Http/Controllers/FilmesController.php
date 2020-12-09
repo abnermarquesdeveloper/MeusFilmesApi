@@ -36,4 +36,33 @@ class FilmesController extends Controller
         }
         return $this->array;
     }
+
+    public function new(Request $request){
+        $name = $request->input('name');
+        $genre = $request->input('genre');
+        $description = $request->input('description');
+        $year = $request->input('year');
+
+        if($name && $genre && $description && $year){
+            $filme = new Filme();
+            $filme->name = $name;
+            $filme->genre = $genre;
+            $filme->description = $description;
+            $filme->year = $year;
+            $filme->save();
+
+            $this->array['result'] = [
+                'id'=> $filme->id,
+                'name'=> $filme->name,
+                'genre'=> $filme->genre,
+                'description'=> $filme->description,
+                'year'=> $filme->year
+            ];
+        }else{
+            $this->array['error'] = "Campos devem der preenchidos!";
+        }
+        
+
+        return $this->array;
+    }
 }

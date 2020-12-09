@@ -25,6 +25,8 @@ Route::get('/test', function(Request $request){
 
 Route::get('/filmes', [FilmesController::class, 'all']);
 
-Route::get('/filmes/{id}', [FilmesController::class, 'findOne']);
+Route::get('/filme/{id}', [FilmesController::class, 'findOne']);
+
+Route::post('/filme', [FilmesController::class, 'new']);
 
 
